@@ -414,6 +414,8 @@ main {
 }
 
 .single-tour .image-container {
+  background: var(--grey-300);
+  border-radius: var(--borderRadius) var(--borderRadius) 0 0;
   height: 15rem;
   overflow: hidden;
 }
