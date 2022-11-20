@@ -60,9 +60,13 @@ html {
   --shadow-1: 0 1px 3px 0 rgb(0, 0, 0, 0.1), 0 1px 2px 0 rgb(0, 0, 0, 0.06);
   --shadow-2: 0 4px 6px -1px rgb(0, 0, 0, 0.1),
     0 2px 4px -1px rgb(0, 0, 0, 0.06);
+  --shadow-white-2: 0 4px 6px -1px hsla(0, 0%, 100%, 0.1),
+    0 2px 4px -1px rgb(0, 0, 0, 0.06);
   --shadow-3: 0 10px 15px -3px rgb(0, 0, 0, 0.1),
     0 4px 6px -2px rgb(0, 0, 0, 0.05);
   --shadow-4: 0 20px 25px -5px rgb(0, 0, 0, 0.1),
+    0 10px 10px -5px rgb(0, 0, 0, 0.04);
+  --shadow-light-4: 0 20px 25px -5px hsla(0, 0%, 100%, 0.1),
     0 10px 10px -5px rgb(0, 0, 0, 0.04);
 }
 
@@ -310,6 +314,147 @@ ul {
 
 /*
 =============== 
-Reviews
+Tours
 ===============
 */
+
+body {
+  background: var(--primary-800);
+}
+
+main {
+  width: 90vw;
+  max-width: var(--fixedWidth);
+  margin: 5rem 0;
+}
+
+.loader-container {
+  height: calc(100vh - 10rem);
+  min-width: 100vw;
+  display: grid;
+  justify-items: center;
+  align-items: end;
+}
+
+.loader {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  background: var(--primary-500);
+  transform: rotateX(65deg) rotate(45deg);
+  /* remove bellows command for perspective change */
+  transform: perspective(200px) rotateX(65deg) rotate(45deg);
+  color: #fff;
+  animation: layers1 1s linear infinite alternate;
+}
+
+.loader:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  animation: layerTr 1s linear infinite alternate;
+}
+
+@keyframes layers1 {
+  0% {
+    box-shadow: 0px 0px 0 0px;
+  }
+  90%,
+  100% {
+    box-shadow: 20px 20px 0 -4px;
+  }
+}
+@keyframes layerTr {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-25px, -25px) scale(1);
+  }
+}
+
+.title {
+  text-align: center;
+  color: var(--primary-200);
+  margin-bottom: 2rem;
+}
+
+.underline {
+  width: 6rem;
+  height: 0.25rem;
+  background: var(--primary-300);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-tour {
+  background: var(--white);
+  border-radius: var(--borderRadius);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-light-2);
+  /* remember shadow */
+  transition: var(--transition);
+}
+
+.single-tour:hover {
+  box-shadow: var(--shadow-light-4);
+}
+
+.single-tour img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+  /* remember this radius if issues */
+}
+
+.tour-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.tour-info h4 {
+  margin-bottom: 0;
+}
+
+.single-tour button {
+  background: transparent;
+  border-color: transparent;
+  text-transform: capitalize;
+  color: var(--primary-500);
+  font-size: 1rem;
+  cursor: pointer;
+  padding-left: 0.25rem;
+}
+
+.tour-price {
+  color: var(--primary-500);
+  background: var(--primary-900);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--borderRadius);
+}
+
+.single-tour footer {
+  padding: 1.5rem 2rem;
+}
+
+.single-tour .delete-btn {
+  display: block;
+  width: 200px;
+  margin: 1rem auto 0 auto;
+  color: var(--red-dark);
+  letter-spacing: var(--letterSpacing);
+  background: transparent;
+  border: 1px solid var(--red-dark);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--borderRadius);
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 4rem;
+  }
+}
